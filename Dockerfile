@@ -1,20 +1,20 @@
 FROM node:20
 
 # Set the working directory
-WORKDIR /app
+WORKDIR /app/tracker-backend
 
-# Copy package.json and pnpm-lock.yaml from tracker-backend folder
-COPY tracker-backend/package.json ./tracker-backend/
-COPY tracker-backend/pnpm-lock.yaml ./tracker-backend/
+# Copy package.json and pnpm-lock.yaml to the working directory
+COPY tracker-backend/package.json ./
+COPY tracker-backend/pnpm-lock.yaml ./
 
 # Install pnpm globally
 RUN npm install -g pnpm
 
 # Install dependencies
-RUN pnpm install --prefix ./tracker-backend
+RUN pnpm install
 
-# Copy the rest of your application code
-COPY tracker-backend/ .
+# Copy the rest of the application code
+COPY tracker-backend/. ./
 
 # Expose the port your app runs on
 EXPOSE 7860
