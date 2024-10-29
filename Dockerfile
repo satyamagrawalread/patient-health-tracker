@@ -1,24 +1,25 @@
-FROM node:20-alpine
+FROM node:20
 
-# Set the working directory
+# Set the working directory for the backend
+WORKDIR /app
+
+# First, copy the backend directory
+COPY tracker-backend ./tracker-backend
+
+# Move to the backend directory
 WORKDIR /app/tracker-backend
-
-# Copy package.json and pnpm-lock.yaml to the working directory
-COPY tracker-backend/package.json ./
-COPY tracker-backend/pnpm-lock.yaml ./
 
 # Install pnpm globally
 RUN npm install -g pnpm
 
-# Install dependencies (this will also install nodemon)
+# Install dependencies
 RUN pnpm install --shamefully-hoist
-# RUN pnpm install
 
-# Copy the rest of your application code
-COPY tracker-backend/. ./
-
-# Expose the port your app runs on
+# Expose the port
 EXPOSE 7860
 
-# Start the application using nodemon
-CMD ["node", "index.js"]  # Change 'index.js' to your entry file
+# Debug: List files to verify structure
+RUN ls -la
+
+# Start the application
+CMD ["node", "index.js"]
