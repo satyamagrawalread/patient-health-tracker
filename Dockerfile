@@ -11,8 +11,8 @@ COPY tracker-backend/pnpm-lock.yaml ./
 RUN npm install -g pnpm
 
 # Install dependencies (this will also install nodemon)
-# RUN pnpm install --shamefully-hoist
-RUN pnpm install
+RUN pnpm install --shamefully-hoist
+# RUN pnpm install
 
 # Copy the rest of your application code
 COPY tracker-backend/. ./
