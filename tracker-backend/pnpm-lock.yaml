@@ -26,6 +26,7 @@ importers:
       mongoose:
         specifier: ^8.7.2
         version: 8.7.2
+    devDependencies:
       nodemon:
         specifier: ^3.1.7
         version: 3.1.7
