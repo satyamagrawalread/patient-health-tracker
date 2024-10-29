@@ -2,7 +2,7 @@ import { getPatientById, getPatients } from "@/api-functions/patients.api";
 import { OPatient, PatientType } from "@/types/patient.types";
 import { message } from "antd";
 import { useQuery } from "react-query";
-import { useLocation, useNavigate } from "react-router-dom";
+
 
 export const useGetAllPatientsQuery = ({
   filters,
@@ -11,8 +11,8 @@ export const useGetAllPatientsQuery = ({
   filters: string[];
   searchQuery: string;
 }) => {
-  const navigate = useNavigate();
-  const { pathname } = useLocation();
+  // const navigate = useNavigate();
+  // const { pathname } = useLocation();
   return useQuery<{ data: OPatient[] }>({
     queryKey: ["patients", ...filters, searchQuery],
     queryFn: () => getPatients({ filters, searchQuery }),
@@ -21,9 +21,8 @@ export const useGetAllPatientsQuery = ({
         "lastSelectedPatientId"
       );
       if (lastSelectedPatientId) {
-        navigate(`/patient/${lastSelectedPatientId}`, {
-          replace: pathname !== "/",
-        });
+        // console.log(window.history);
+        // navigate(`/patient/${lastSelectedPatientId}`);
       }
     },
   });
