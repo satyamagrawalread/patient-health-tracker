@@ -7,7 +7,7 @@ const userRoutes = require('./routes/user');
 const patientRoutes = require('./routes/patient');
 const priorAuthRoutes = require('./routes/priorAuth');
 
-PORT = process.env.PORT || 8080;
+PORT = process.env.PORT || 7860;
 
 connectDB();
 
