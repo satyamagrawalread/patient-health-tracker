@@ -18,7 +18,7 @@ RUN pnpm install --shamefully-hoist
 COPY tracker-backend/. ./
 
 # Expose the port your app runs on
-EXPOSE 8080
+EXPOSE 7860
 
 # Start the application using nodemon
 CMD ["node", "index.js"]  # Change 'index.js' to your entry file
