@@ -20,4 +20,4 @@ COPY tracker-backend/. ./
 EXPOSE 7860
 
 # Start the application using nodemon
-CMD ["npx", "nodemon", "index.js"]  # Change 'index.js' to your entry file
+CMD ["node", "index.js"]  # Change 'index.js' to your entry file
