@@ -30,8 +30,7 @@ export default function CreatePriorAuthRequestModal({
   } = useForm<PriorAuthInputType>();
   const {
     mutate: createPriorAuthRequest,
-    isLoading,
-    isSuccess,
+    isLoading
   } = usePostMutationCreatePriorAuthRequest();
 
   const onFormSubmit = (data: PriorAuthInputType) => {

@@ -6,7 +6,7 @@ import { MdClear } from "react-icons/md";
 import { Loader2Icon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Filters from "./Filters";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function PatientsList() {
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
