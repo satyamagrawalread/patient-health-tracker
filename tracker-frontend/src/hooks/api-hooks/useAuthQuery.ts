@@ -1,5 +1,5 @@
 import { loginUser, registerUser } from "@/api-functions/auth.api";
-import { useMutation, useQuery } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { getToken, removeToken, setToken } from "@/helpers";
 import { useNavigate } from "react-router-dom";
 import { message } from "antd";
@@ -28,11 +28,13 @@ export const useGetProfile = () => {
 
 export const usePostMutationLogout = () => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: handleLogout,
     onSuccess: () => {
       message.success("User is logged out");
       removeToken();
+      queryClient.clear();
       navigate("/signin", { replace: true });
     }
   })

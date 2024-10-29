@@ -28,21 +28,27 @@ export default function CreatePriorAuthRequestModal({
     handleSubmit,
     formState: { errors },
   } = useForm<PriorAuthInputType>();
-  const { mutate: createPriorAuthRequest, isLoading } =
-    usePostMutationCreatePriorAuthRequest();
+  const {
+    mutate: createPriorAuthRequest,
+    isLoading,
+    isSuccess,
+  } = usePostMutationCreatePriorAuthRequest();
 
   const onFormSubmit = (data: PriorAuthInputType) => {
-    createPriorAuthRequest({requestData: data, patientId: patient._id});
-    setIsModalOpen(false);
+    createPriorAuthRequest(
+      { requestData: data, patientId: patient._id },
+      {
+        onSuccess: () => {
+          setIsModalOpen(false);
+        },
+      }
+    );
   };
 
   return (
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
       <DialogTrigger asChild>
-        <Button
-          size="default"
-          className="font-bold w-64"
-        >
+        <Button size="default" className="font-bold w-64">
           Create Prior Authorization Request
         </Button>
       </DialogTrigger>
@@ -61,10 +67,15 @@ export default function CreatePriorAuthRequestModal({
                 Name
               </Label>
               <Input
-              type="text"
+                type="text"
                 placeholder="Enter name"
                 value={patient.name}
-                onFocus={(e) => e.target.setSelectionRange(patient.name.length, patient.name.length)}
+                onFocus={(e) =>
+                  e.target.setSelectionRange(
+                    patient.name.length,
+                    patient.name.length
+                  )
+                }
                 {...register("patientName", {
                   required: {
                     value: true,
@@ -275,14 +286,13 @@ export default function CreatePriorAuthRequestModal({
                 Date Of Service
               </Label>
               <Input
-              type="date"
+                type="date"
                 placeholder="DD-MM-YYYY"
                 {...register("dateOfService", {
                   required: {
                     value: true,
                     message: "Date Of Service is required",
                   },
-                  
                 })}
                 className="col-span-3"
               />
@@ -295,15 +305,11 @@ export default function CreatePriorAuthRequestModal({
             </div>
             <div>
               <Label htmlFor="doctorNotes" className="text-right">
-                Doctor Notes {<span className="text-muted-foreground">Optional</span>}
+                Doctor Notes{" "}
+                {<span className="text-muted-foreground">Optional</span>}
               </Label>
-              <Input
-                placeholder="Enter Doctor Notes"
-                
-                className="col-span-3"
-              />
+              <Input placeholder="Enter Doctor Notes" className="col-span-3" />
             </div>
-            
           </div>
           <DialogFooter>
             <Button disabled={isLoading} type="submit">
