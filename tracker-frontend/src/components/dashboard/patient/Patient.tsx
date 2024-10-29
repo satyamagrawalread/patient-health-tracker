@@ -15,7 +15,7 @@ export default function Patient({
   const { pathname } = useLocation();
   const handlePatientClick = () => {
     // useGetPatientDataQuery({id: patient._id});
-    
+    sessionStorage.setItem('lastSelectedPatientId', patient._id);
     navigate(`/patient/${patient._id}`, {replace: pathname!=='/'});
   };
   return (

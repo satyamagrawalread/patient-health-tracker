@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 
 export const Dashboard = () => {
   const {pathname} = useLocation();
+  
   return (
     <Layout>
       {pathname=='/requests' ? <PriorAuthRequests /> : <PatientsList />}
