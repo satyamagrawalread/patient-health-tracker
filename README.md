@@ -1,7 +1,9 @@
+---
 title: Patient Health Tracker
-emoji: 🏢
+emoji: 👁
 colorFrom: blue
-colorTo: green
+colorTo: red
 sdk: docker
 pinned: false
-short_description: A web application for healthcare provider.
+short_description: 'A web application for healthcare provider who can view list '
+---
