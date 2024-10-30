@@ -102,7 +102,7 @@ export default function PatientsList() {
             </div>
           </div>
         </form>
-        <div className="text-xl text-gray-800 py-2 border-b border-blue-200">
+        <div className="text-xl text-gray-800 py-2 pl-2 border-b border-blue-200">
           Patients
         </div>
         <div className="flex-1 overflow-y-auto">
