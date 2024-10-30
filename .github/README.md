@@ -1,29 +1,39 @@
 # Patient Health Tracker
 - A web application to track patient's information and create Prior Authorization Requests for selected patients.
-- Features: Search and filter any data by text. Highlight searched text.
-- 
-# Steps to start:
+- Additional Features: Search and filter any data by text. Highlight searched text.
+
+### Try Now: 
+```
+https://patient-health-tracker.vercel.app/
+```
+# Steps to run locally:
 - Setup Backend:
 ```
-clone backend from https://github.com/satyamagrawalread/patient-health-tracker/main/tracker-backend
-Connect your database to the backend.
+cd tracker-backend
+Add Environment Variables
 npm install
 npm start
+
+Alternative:
+Since a Dockerfile is created for the backend too inside the root folder. You can build a docker and run docker.
+Command:
+docker build -t <dockername> .
+docker run -p <Port>:<Port> <dockername>
+
 Sample Environment Variables:
 MONGODB_URI = "mongodb+srv://<username>:<password>@cluster1.6qr2t.mongodb.net/?retryWrites=true&w=majority&appName=Cluster3"
-
 SECRET_KEY = patientpemake1234dsauiytrasdfg2h
 PORT = 8080
 ```
 - Setup Frontend:
 ```
-clone Frontend
-Add backend url to the Frontend .env file
+cd tracker-frontend
+Add Environment Variables
 npm install
+pnpm install
 npm run dev
+
+Sample EnvironmentVariables:
+VITE_APP_BACKEND_URL="http://localhost:7860"
 ```
 
-### Hosted Website:
-```
-https://patient-health-tracker-prior-auth-request.vercel.app/
-```
