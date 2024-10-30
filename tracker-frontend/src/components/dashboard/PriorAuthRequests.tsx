@@ -23,7 +23,7 @@ export default function PriorAuthRequests() {
         <CardHeader>
           <CardTitle>Prior Authentication Requests Submitted: </CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="flex flex-col-reverse gap-2">
           {requests.map((request) => {
             return (
               <div
