@@ -22,7 +22,7 @@ export default function PriorAuthInfo({ requestId }: { requestId: string }) {
       </div>
     );
   }
-  
+
   return (
     <div key={requestId} className="border rounded-lg p-4 hover:bg-gray-50">
       <div className="flex justify-between items-start mb-2">
@@ -31,6 +31,9 @@ export default function PriorAuthInfo({ requestId }: { requestId: string }) {
             <Calendar className="w-4 h-4 mr-2" />
             Service Date: {request?.dateOfService}
           </h4>
+          {/* <p className="text-sm text-gray-700">
+            <span className="font-medium">Patient:</span> {request?.patientName}
+          </p> */}
           <Badge
             className={
               request?.status === "Approved"
@@ -49,6 +52,9 @@ export default function PriorAuthInfo({ requestId }: { requestId: string }) {
         </div>
       </div>
       <div className="mt-2">
+        <p className="text-sm text-gray-700">
+          <span className="font-medium">Condition:</span> {request?.condition}
+        </p>
         <p className="text-sm text-gray-700">
           <span className="font-medium">Treatment:</span>{" "}
           {request?.treatmentPlan}

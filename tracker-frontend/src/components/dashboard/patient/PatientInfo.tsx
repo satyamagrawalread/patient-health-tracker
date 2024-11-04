@@ -158,7 +158,7 @@ export default function PatientInfo({
         <CardHeader>
           <CardTitle>Prior Authorization Requests:</CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="flex flex-col-reverse gap-2">
 
           {patient?.priorAuthId && patient?.priorAuthId.length > 0 ? patient?.priorAuthId.map(requestId => {
             return <PriorAuthInfo key={requestId} requestId={requestId} />

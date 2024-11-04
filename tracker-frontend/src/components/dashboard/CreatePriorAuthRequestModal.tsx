@@ -26,6 +26,7 @@ export default function CreatePriorAuthRequestModal({
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<PriorAuthInputType>();
   const {
@@ -38,6 +39,7 @@ export default function CreatePriorAuthRequestModal({
       { requestData: data, patientId: patient._id },
       {
         onSuccess: () => {
+          reset();
           setIsModalOpen(false);
         },
       }
@@ -307,7 +309,7 @@ export default function CreatePriorAuthRequestModal({
                 Doctor Notes{" "}
                 {<span className="text-muted-foreground">Optional</span>}
               </Label>
-              <Input placeholder="Enter Doctor Notes" className="col-span-3" />
+              <Input type="text" placeholder="Enter Doctor Notes" {...register("doctorNotes")} className="col-span-3" />
             </div>
           </div>
           <DialogFooter>

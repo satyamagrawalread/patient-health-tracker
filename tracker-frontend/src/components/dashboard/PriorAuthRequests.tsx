@@ -10,12 +10,14 @@ export default function PriorAuthRequests() {
     return allRequests?.data || [];
   }, [allRequests]);
   if (isLoading) {
-    return <div className="h-svh flex justify-center items-center">
-    <div className="flex flex-col items-center">
-      <div className="text-gray-500">May take some time</div>
-      <Loader2Icon className=" animate-spin " />
-    </div>
-  </div>;
+    return (
+      <div className="h-svh flex justify-center items-center">
+        <div className="flex flex-col items-center">
+          <div className="text-gray-500">May take some time</div>
+          <Loader2Icon className=" animate-spin " />
+        </div>
+      </div>
+    );
   }
   return (
     <div className="overflow-y-auto">
@@ -36,6 +38,10 @@ export default function PriorAuthRequests() {
                       <Calendar className="w-4 h-4 mr-2" />
                       Service Date: {request?.dateOfService}
                     </h4>
+                    <p className="text-sm text-gray-700">
+                      <span className="font-medium">Patient:</span>{" "}
+                      {request?.patientName}
+                    </p>
                     <Badge
                       className={
                         request?.status === "Approved"
@@ -54,6 +60,10 @@ export default function PriorAuthRequests() {
                   </div>
                 </div>
                 <div className="mt-2">
+                  <p className="text-sm text-gray-700">
+                    <span className="font-medium">Condition:</span>{" "}
+                    {request?.condition}
+                  </p>
                   <p className="text-sm text-gray-700">
                     <span className="font-medium">Treatment:</span>{" "}
                     {request?.treatmentPlan}
