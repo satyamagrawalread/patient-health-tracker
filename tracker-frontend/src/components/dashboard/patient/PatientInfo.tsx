@@ -29,8 +29,8 @@ export default function PatientInfo({
     <div className="max-w-4xl mx-auto md:p-4 space-y-4">
       <Card>
         <CardHeader className="flex justify-between">
-          {patient && <CreatePriorAuthRequestModal patient={patient} />}
           <CardTitle>Patient Information</CardTitle>
+          {patient && <CreatePriorAuthRequestModal patient={patient} />}
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 gap-4">
